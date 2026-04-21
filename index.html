@@ -131,11 +131,17 @@
         .tracking-field { margin:12px 0; color:var(--text-mid); border-bottom:1px solid var(--pale); padding-bottom:10px; }
         .tracking-field strong { color:var(--text-dark); }
         .tracking-notes p { font-weight:700; color:var(--rich); margin-bottom:10px; font-size:.95em; margin-top:16px; }
-        .principal-box { background:linear-gradient(135deg,var(--lightest),#ede8f7); border:1.5px solid var(--soft); border-radius:14px; padding:18px 20px; margin-top:18px; }
-        .principal-title { font-size:1em; font-weight:800; color:var(--deep); margin-bottom:14px; padding-bottom:10px; border-bottom:1px dashed var(--soft); }
-        .notes-box { min-height:90px; border:1.5px dashed var(--soft); border-radius:10px; padding:12px; background:white; }
-        .principal-sig-field { display:flex; align-items:center; gap:10px; }
-        .sig-space { flex:1; border-bottom:1.5px solid var(--soft); min-height:50px; display:block; margin-top:auto; }
+        .notes-textarea { width:100%; min-height:100px; border:1.5px solid var(--soft); border-radius:10px; padding:12px; font-family:'Tajawal',sans-serif; font-size:1em; color:var(--text-dark); background:white; resize:vertical; direction:rtl; transition:border-color .2s; }
+        .notes-textarea:focus { outline:none; border-color:var(--rich); box-shadow:0 0 0 3px rgba(124,92,191,.1); }
+        .notes-textarea::placeholder { color:var(--text-soft); }
+        .notes-preview { display:none; margin-top:14px; background:linear-gradient(135deg,var(--lightest),#ede8f7); border:1.5px solid var(--soft); border-radius:12px; padding:16px 18px; color:var(--text-dark); font-size:1em; line-height:1.8; white-space:pre-wrap; }
+        .notes-preview.visible { display:block; animation:pageIn .3s ease; }
+        .notes-preview-label { font-size:.82em; font-weight:700; color:var(--text-soft); margin-bottom:8px; text-transform:uppercase; letter-spacing:.05em; }
+        .sig-field { display:flex; align-items:center; gap:10px; }
+        .sig-line { flex:1; border-bottom:1.5px solid var(--soft); display:inline-block; min-width:100px; }
+        .track-input { border:none; border-bottom:1.5px solid var(--soft); background:transparent; font-family:'Tajawal',sans-serif; font-size:1em; color:var(--text-dark); padding:2px 6px; width:calc(100% - 80px); outline:none; transition:border-color .2s; direction:rtl; }
+        .track-input:focus { border-bottom-color:var(--rich); }
+        .track-input::placeholder { color:var(--text-soft); font-size:.88em; }
 
         @media (max-width:768px) {
             .cover-card { padding:40px 24px; }
@@ -331,26 +337,26 @@
             <div class="tracking-grid">
                 <div class="tracking-card">
                     <h4>📅 المتابعة الأولى</h4>
-                    <div class="tracking-field"><strong>اليوم:</strong> _______________</div>
-                    <div class="tracking-field"><strong>التاريخ:</strong> _______________</div>
-                    <div class="tracking-notes"><p>التوصيات:</p><div class="notes-box"></div></div>
-                    <div class="principal-box">
-                        <div class="principal-title">✍️ بيانات المديرة</div>
-                        <div class="tracking-field"><strong>اسم المديرة:</strong> ___________________________</div>
-                        <div class="tracking-field principal-sig-field"><strong>التوقيع:</strong><span class="sig-space"></span></div>
-                        <div class="tracking-notes"><p>ملاحظات المديرة:</p><div class="notes-box"></div></div>
+                    <div class="tracking-field"><strong>اليوم:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field"><strong>التاريخ:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field"><strong>الاسم:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field sig-field"><strong>التوقيع:</strong><span class="sig-line"></span></div>
+                    <div class="tracking-notes">
+                        <p>الملاحظات:</p>
+                        <textarea class="notes-textarea" placeholder="اكتبي الملاحظات هنا..." oninput="showPreview(this,'preview1')"></textarea>
+                        <div class="notes-preview" id="preview1"></div>
                     </div>
                 </div>
                 <div class="tracking-card">
                     <h4>📅 المتابعة الثانية</h4>
-                    <div class="tracking-field"><strong>اليوم:</strong> _______________</div>
-                    <div class="tracking-field"><strong>التاريخ:</strong> _______________</div>
-                    <div class="tracking-notes"><p>التوصيات:</p><div class="notes-box"></div></div>
-                    <div class="principal-box">
-                        <div class="principal-title">✍️ بيانات المديرة</div>
-                        <div class="tracking-field"><strong>اسم المديرة:</strong> ___________________________</div>
-                        <div class="tracking-field principal-sig-field"><strong>التوقيع:</strong><span class="sig-space"></span></div>
-                        <div class="tracking-notes"><p>ملاحظات المديرة:</p><div class="notes-box"></div></div>
+                    <div class="tracking-field"><strong>اليوم:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field"><strong>التاريخ:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field"><strong>الاسم:</strong> <input class="track-input" type="text" placeholder="اكتب هنا..."></div>
+                    <div class="tracking-field sig-field"><strong>التوقيع:</strong><span class="sig-line"></span></div>
+                    <div class="tracking-notes">
+                        <p>الملاحظات:</p>
+                        <textarea class="notes-textarea" placeholder="اكتبي الملاحظات هنا..." oninput="showPreview(this,'preview2')"></textarea>
+                        <div class="notes-preview" id="preview2"></div>
                     </div>
                 </div>
             </div>
@@ -370,6 +376,17 @@
     </div>
 
 <script>
+    function showPreview(textarea, previewId) {
+        const preview = document.getElementById(previewId);
+        const text = textarea.value.trim();
+        if (text) {
+            preview.innerHTML = '<div class="notes-preview-label">📋 الملاحظات المكتوبة:</div>' + text.replace(/</g,'&lt;');
+            preview.classList.add('visible');
+        } else {
+            preview.classList.remove('visible');
+        }
+    }
+
     let currentPage = 'cover', busy = false;
 
     function showPage(id, btn) {
